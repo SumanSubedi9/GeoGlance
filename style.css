@@ -9,14 +9,62 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  font-family: system-ui;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .container {
   display: flex;
   flex-flow: column;
   align-items: center;
 }
 
-.images {
+.country {
+  background-color: #fff;
+  font-size: 1.8rem;
+  box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.2);
+  padding: 3rem 4rem;
+
+  border-radius: 0.7rem;
+  margin: 0 3rem;
+}
+
+.country__name {
+  font-size: 2.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.country__region {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  color: #888;
+}
+
+.country__row:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.country__row span {
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 2.4rem;
+}
+
+/* .images {
   display: flex;
+} */
+
+img {
+  display: block;
+  width: 80rem;
+  margin: 4rem;
+  box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.7rem;
 }
 
 .country__img {
