@@ -8,3 +8,17 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.images {
+  display: flex;
+}
+
+.country__img {
+  width: 30rem;
+}
