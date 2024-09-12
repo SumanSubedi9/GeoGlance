@@ -24,6 +24,10 @@ body {
   align-items: center;
 }
 
+.countries {
+  display: flex;
+}
+
 .country {
   background-color: #fff;
   font-size: 1.8rem;
@@ -55,9 +59,9 @@ body {
   font-size: 2.4rem;
 }
 
-/* .images {
+.images {
   display: flex;
-} */
+}
 
 img {
   display: block;
