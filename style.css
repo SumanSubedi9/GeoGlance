@@ -54,7 +54,7 @@ body {
   height: 3rem;
   width: 3rem;
   background-color: transparent;
-  color: #999999;
+  color: #a3a3a3;
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -70,7 +70,7 @@ body {
 }
 
 .country {
-  background-color: #fff;
+  background-color: #e0e0e0;
   font-size: 1.8rem;
   box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.2);
   padding: 3rem 4rem;
