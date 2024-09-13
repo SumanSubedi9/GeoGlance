@@ -39,8 +39,8 @@ const renderCountries = function (data) {
 // Function to fetch data from the API and return it
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then((response) => response.json())
-    .then((data) => renderCountries(data[0]));
+    .then((response) => response.json()) // converts the raw fetched data into object using json()
+    .then((data) => renderCountries(data[0])); // gets the required data from the object
 };
 
 getCountryData("portugal");
