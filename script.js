@@ -1,17 +1,9 @@
 "use strict";
+const countriesContainer = document.querySelector(".countries");
 
-const getCountryData = function (country) {
-  const countriesContainer = document.querySelector(".countries");
-
-  const request = new XMLHttpRequest();
-  request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
-  request.send();
-
-  request.addEventListener("load", function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
-
-    const html = `
+// function to render Countries on the page
+const renderCountries = function (data) {
+  const html = `
   <article class="country">
     <img class="country__img" src="${data.flags.svg}" />
     <div class="country__data">
@@ -29,10 +21,28 @@ const getCountryData = function (country) {
     </div>
   </article>
   `;
-    countriesContainer.insertAdjacentHTML("beforeend", html);
-  });
+  countriesContainer.insertAdjacentHTML("beforeend", html);
 };
 
-getCountryData("nepal");
-getCountryData("india");
+// const getCountryData = function (country) {
+//   const request = new XMLHttpRequest();
+//   request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
+//   request.send();
+
+//   request.addEventListener("load", function () {
+//     const [data] = JSON.parse(this.responseText);
+//     console.log(data);
+//     renderCountries(data);
+//   });
+// };
+
+// Function to fetch data from the API and return it
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then((response) => response.json())
+    .then((data) => renderCountries(data[0]));
+};
+
+getCountryData("portugal");
+getCountryData("usa");
 getCountryData("germany");
