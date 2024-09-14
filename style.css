@@ -99,6 +99,15 @@ body {
 
   border-radius: 0.7rem;
   margin: 0 3rem;
+
+  scroll-behavior: smooth;
+
+  transition: all 0.5s;
+}
+
+.country:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 .country__name {
