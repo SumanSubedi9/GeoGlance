@@ -1,15 +1,24 @@
 "use strict";
 const form = document.querySelector(".form");
 const inputData = document.querySelector(".search");
+const searchBar = document.querySelector(".search-container");
+const errorMessage = document.querySelector(".error-message");
 const countriesContainer = document.querySelector(".countries");
 
 let userData;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
+
   userData = inputData.value;
-  console.log(userData);
-  getCountryData(userData);
+
+  if (userData === "" || !isNaN(userData)) {
+    errorMessage.textContent = "Please enter a country name";
+    errorMessage.classList.remove("hidden");
+  } else {
+    errorMessage.classList.add("hidden");
+    getCountryData(userData);
+  }
 });
 
 // function to render Countries on the page
