@@ -1,5 +1,16 @@
 "use strict";
+const form = document.querySelector(".form");
+const inputData = document.querySelector(".search");
 const countriesContainer = document.querySelector(".countries");
+
+let userData;
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  userData = inputData.value;
+  console.log(userData);
+  getCountryData(userData);
+});
 
 // function to render Countries on the page
 const renderCountries = function (data) {
@@ -24,25 +35,9 @@ const renderCountries = function (data) {
   countriesContainer.insertAdjacentHTML("beforeend", html);
 };
 
-// const getCountryData = function (country) {
-//   const request = new XMLHttpRequest();
-//   request.open("GET", `https://restcountries.com/v3.1/name/${country}`);
-//   request.send();
-
-//   request.addEventListener("load", function () {
-//     const [data] = JSON.parse(this.responseText);
-//     console.log(data);
-//     renderCountries(data);
-//   });
-// };
-
 // Function to fetch data from the API and return it
 const getCountryData = function (country) {
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then((response) => response.json()) // converts the raw fetched data into object using json()
     .then((data) => renderCountries(data[0])); // gets the required data from the object
 };
-
-getCountryData("portugal");
-getCountryData("usa");
-getCountryData("germany");
