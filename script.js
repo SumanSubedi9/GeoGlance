@@ -13,16 +13,24 @@ form.addEventListener("submit", function (e) {
   userData = inputData.value;
 
   if (userData === "" || !isNaN(userData)) {
-    errorMessage.textContent = "Please enter a country name";
-    errorMessage.classList.remove("hidden");
+    errorMessage.textContent = "Please enter a valid country name";
+    renderError();
   } else {
     errorMessage.classList.add("hidden");
     getCountryData(userData);
   }
+
+  // Clear search bar
+  inputData.value = "";
 });
+
+const renderError = function () {
+  errorMessage.classList.remove("hidden");
+};
 
 // function to render Countries on the page
 const renderCountries = function (data) {
+  console.log(data);
   const html = `
   <article class="country">
     <img class="country__img" src="${data.flags.svg}" />
@@ -44,9 +52,23 @@ const renderCountries = function (data) {
   countriesContainer.insertAdjacentHTML("beforeend", html);
 };
 
+const getJSON = function (url, errorMsg = "Something went wrong") {
+  return fetch(url).then((response) => {
+    if (!response.ok) {
+      throw new Error(`${errorMsg} (${response.status})`);
+    }
+    return response.json();
+  });
+};
+
 // Function to fetch data from the API and return it
 const getCountryData = function (country) {
-  fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then((response) => response.json()) // converts the raw fetched data into object using json()
-    .then((data) => renderCountries(data[0])); // gets the required data from the object
+  getJSON(
+    `https://restcountries.com/v3.1/name/${country}?fullText=true`,
+    "Country not found"
+  ) // fetches the data
+    .then((data) => renderCountries(data[0])) // gets the required data from the object
+    .catch(
+      (err) => (renderError(), (errorMessage.textContent = ` ${err.message}`))
+    );
 };
