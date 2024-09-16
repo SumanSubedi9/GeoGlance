@@ -33,6 +33,9 @@ const renderCountries = function (data) {
   console.log(data);
   const html = `
   <article class="country">
+    <button class='close-btn'>
+      <ion-icon name="close-outline"></ion-icon>
+    </button>
     <img class="country__img" src="${data.flags.svg}" />
     <div class="country__data">
       <h3 class="country__name">${data.name.common}</h3>
@@ -50,6 +53,16 @@ const renderCountries = function (data) {
   </article>
   `;
   countriesContainer.insertAdjacentHTML("beforeend", html);
+
+  // Close Button
+
+  const closeBtn = document.querySelectorAll(".close-btn");
+  closeBtn.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      const card = this.parentNode;
+      card.remove();
+    });
+  });
 };
 
 const getJSON = function (url, errorMsg = "Something went wrong") {
