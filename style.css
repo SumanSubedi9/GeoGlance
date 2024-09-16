@@ -99,10 +99,34 @@ body {
 
   border-radius: 0.7rem;
   margin: 0 3rem;
+  position: relative;
 
   scroll-behavior: smooth;
 
   transition: all 0.5s;
+}
+
+/* Close card btn */
+
+.close-btn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.close-btn:hover {
+  transform: scale(2);
+  transition: all 0.5s;
+}
+
+/* Hides card beyond the 3rd one */
+
+.country:nth-child(n + 4) {
+  display: none;
 }
 
 .country:hover {
