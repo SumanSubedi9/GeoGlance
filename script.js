@@ -29,6 +29,7 @@ const renderError = function () {
 };
 
 // function to render Countries on the page
+
 const renderCountries = function (data) {
   console.log(data);
   const html = `
@@ -75,6 +76,7 @@ const getJSON = function (url, errorMsg = "Something went wrong") {
 };
 
 // Function to fetch data from the API and return it
+
 const getCountryData = function (country) {
   getJSON(
     `https://restcountries.com/v3.1/name/${country}?fullText=true`,

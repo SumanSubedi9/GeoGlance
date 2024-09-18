@@ -1,0 +1,6 @@
+/* Tablets Below 944 px */
+@media (max-width: 59em) {
+  .body {
+    width: 50rem;
+  }
+}
