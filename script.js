@@ -1,4 +1,5 @@
 "use strict";
+
 const form = document.querySelector(".form");
 const inputData = document.querySelector(".search");
 const searchBar = document.querySelector(".search-container");
@@ -94,12 +95,11 @@ const getCountryData = function (country) {
     );
 };
 
+// Functions to generate data for currentLocation
+
 const requestOptions = {
   method: "GET",
 };
-
-// Functions to generate data for currentLocation
-
 const getCurrentLocation = async function () {
   try {
     const position = await getLocation();
@@ -109,17 +109,25 @@ const getCurrentLocation = async function () {
       `https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lng}&apiKey=488790058b9a49bdbff27bd9e8056184`,
       requestOptions
     );
+    if (!response.ok) {
+      throw new Error("Problem getting location data");
+    }
     const dataGeo = await response.json();
     console.log(dataGeo);
 
     const res = await fetch(
       `https://restcountries.com/v3.1/name/${dataGeo.features[0].properties.country}?fullText=true`
     );
+    if (!res.ok) {
+      throw new Error("Problem getting country data");
+    }
     const data = await res.json();
     console.log(data);
     renderCountries(data[0]);
   } catch (err) {
     console.log(err);
+    renderError();
+    errorMessage.textContent = ` ${err.message}`;
   }
 };
 
