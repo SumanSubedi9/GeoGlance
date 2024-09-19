@@ -50,7 +50,7 @@ body {
   border-radius: 0.8rem;
   padding: 0.8rem;
   box-shadow: 0rem 0.2rem 0.3rem rgba(0, 0, 0, 0.2);
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 
 .search-container:hover,
@@ -80,6 +80,37 @@ body {
 }
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.current-location-btn {
+  position: absolute;
+  top: 3rem;
+  background-color: #e0e0e0;
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: 50%;
+  height: 50px;
+  overflow: hidden;
+  width: 50px;
+}
+
+.current-location-btn:hover {
+  background-color: #ebebeb;
+}
+
+.current-location-btn ion-icon {
+  width: 2.7rem;
+  height: 2.7rem;
+}
+
+.current-location-btn ion-icon:hover {
+  transform: scale(1.3);
+  transition: all 0.5s;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 .container {
   display: flex;
