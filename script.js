@@ -6,6 +6,7 @@ const searchBar = document.querySelector(".search-container");
 const errorMessage = document.querySelector(".error-message");
 const countriesContainer = document.querySelector(".countries");
 const currentLocationBtn = document.querySelector(".current-location-btn");
+const container = document.querySelector(".container");
 
 let userData;
 
@@ -32,9 +33,13 @@ const renderError = function () {
 
 // function to render Countries on the page
 
+let currentCounter = 0;
+let maxCounter = 3;
+
 const renderCountries = function (data) {
-  console.log(data);
-  const html = `
+  if (currentCounter < maxCounter) {
+    console.log(data);
+    const html = `
   <article class="country">
   <button class='close-btn'>
   <ion-icon name="close-outline"></ion-icon>
@@ -55,17 +60,32 @@ const renderCountries = function (data) {
   </div>
   </article>
   `;
-  countriesContainer.insertAdjacentHTML("beforeend", html);
+    countriesContainer.insertAdjacentHTML("beforeend", html);
+    currentCounter++;
+    console.log(currentCounter);
+  } else {
+    errorMessage.textContent = "Maximum number of countries reached";
+    renderError();
+  }
 
   // Close Button
 
-  const closeBtn = document.querySelectorAll(".close-btn");
-  closeBtn.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      const card = this.parentNode;
-      card.remove();
+  const closeBtns = Array.from(document.querySelectorAll(".close-btn"));
+
+  for (let i = 0; i < closeBtns.length; i++) {
+    closeBtns[i].addEventListener("click", (event) => {
+      event.stopPropagation();
+      const closeButton = event.target;
+      const countryCard = closeButton.closest(".country");
+      if (!countryCard.classList.contains("removed")) {
+        countryCard.classList.add("removed");
+        countryCard.remove();
+        errorMessage.classList.add("hidden");
+        currentCounter--;
+        console.log(currentCounter);
+      }
     });
-  });
+  }
 };
 
 const getJSON = function (url, errorMsg = "Something went wrong") {
