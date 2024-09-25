@@ -27,9 +27,14 @@ form.addEventListener("submit", function (e) {
   inputData.value = "";
 });
 
+/*---------------------------------------------------------------------------------------------------------------------------- */
+// Render Error message on the UI
+
 const renderError = function () {
   errorMessage.classList.remove("hidden");
 };
+
+/*---------------------------------------------------------------------------------------------------------------------------- */
 
 // function to render Countries on the page
 
@@ -68,6 +73,7 @@ const renderCountries = function (data) {
     renderError();
   }
 
+  /*---------------------------------------------------------------------------------------------------------------------------- */
   // Close Button
 
   const closeBtns = Array.from(document.querySelectorAll(".close-btn"));
@@ -88,6 +94,8 @@ const renderCountries = function (data) {
   }
 };
 
+/*---------------------------------------------------------------------------------------------------------------------------- */
+
 const getJSON = function (url, errorMsg = "Something went wrong") {
   return fetch(url).then((response) => {
     if (!response.ok) {
@@ -97,11 +105,15 @@ const getJSON = function (url, errorMsg = "Something went wrong") {
   });
 };
 
+/*---------------------------------------------------------------------------------------------------------------------------- */
+// Prompts the get current Location on the browser
+
 const getLocation = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
+/*---------------------------------------------------------------------------------------------------------------------------- */
 // Function to fetch data from the API and return it
 
 const getCountryData = function (country) {
@@ -115,6 +127,7 @@ const getCountryData = function (country) {
     );
 };
 
+/*---------------------------------------------------------------------------------------------------------------------------- */
 // Functions to generate data for currentLocation
 
 const requestOptions = {
