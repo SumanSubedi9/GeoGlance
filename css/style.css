@@ -13,6 +13,7 @@ body {
   font-family: system-ui;
   background-color: #d6d6d6;
   min-height: 100vh;
+  min-width: fit-content;
 
   display: flex;
   align-items: center;
@@ -198,5 +199,5 @@ img {
 }
 
 .country__img {
-  width: 30rem;
+  width: 25rem;
 }
