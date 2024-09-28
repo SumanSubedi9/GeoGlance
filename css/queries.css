@@ -1,8 +1,5 @@
 /* Screen Below 944 px */
 @media (max-width: 59em) {
-  body {
-    overflow-x: hidden;
-  }
   .container {
     flex-direction: column;
     justify-content: center;
