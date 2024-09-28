@@ -1,13 +1,24 @@
+/* Screen below 1400px */
+@media (max-width: 87.5em) {
+  .countries {
+    max-width: 100vw;
+    overflow-x: auto;
+    padding: 5rem;
+  }
+
+  .countries::-webkit-scrollbar {
+    display: none;
+  }
+  .country {
+    box-shadow: 0 1rem 3rem 1rem rgba(0, 0, 0, 0.1);
+  }
+}
+
 /* Screen Below 944 px */
 @media (max-width: 59em) {
   .container {
     flex-direction: column;
     justify-content: center;
-  }
-
-  .search-container {
-    width: 40rem;
-    padding: 0.5rem;
   }
 
   .search-container input[type="search"] {
@@ -31,6 +42,22 @@
   }
   .country__img {
     width: 15rem;
+  }
+}
+
+/* Screen Below 600 px */
+
+@media (max-width: 37.5em) {
+  .search-container {
+    width: 50rem;
+  }
+}
+
+/* Screen Below 530 px */
+
+@media (max-width: 33em) {
+  .search-container {
+    width: 40rem;
   }
 }
 
