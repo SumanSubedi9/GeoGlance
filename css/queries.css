@@ -26,20 +26,11 @@
   }
 
   .countries {
-    max-width: 100vw;
     padding: 4rem;
-    overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
   }
 
-  .countries::-webkit-scrollbar {
-    display: none;
-  }
-
-  .country {
-    box-shadow: 0 1rem 3rem 1rem rgba(0, 0, 0, 0.1);
-  }
   .country__img {
     width: 15rem;
   }
