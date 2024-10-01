@@ -21,6 +21,11 @@ body {
   justify-content: center;
 }
 
+.logo {
+  position: absolute;
+  top: 1rem;
+}
+
 .hidden {
   display: none;
 }
