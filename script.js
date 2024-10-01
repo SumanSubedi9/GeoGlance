@@ -53,9 +53,12 @@ const renderCountries = function (data) {
   <div class="country__data">
   <h3 class="country__name">${data.name.common}</h3>
   <h4 class="country__region">${data.region}</h4>
-  <p class="country__row"><span>👫</span>${(+data.population / 1000000).toFixed(
-    1
-  )} million people</p>
+  <p class="country__row"><span>👫</span>${
+    +data.population >= 1000000000
+      ? (+data.population / 1000000000).toFixed(1) + " billion"
+      : (+data.population / 1000000).toFixed(1) + " million"
+  }
+   </p>
   <p class="country__row"><span>🗣️</span>${
     Object.entries(data.languages)[0][1]
   }</p>
