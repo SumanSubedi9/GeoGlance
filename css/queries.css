@@ -78,4 +78,8 @@
     width: 35rem;
     top: 6rem;
   }
+
+  .logo {
+    top: 0rem;
+  }
 }

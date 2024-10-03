@@ -20,6 +20,7 @@ form.addEventListener("submit", function (e) {
     renderError();
   } else {
     errorMessage.classList.add("hidden");
+    searchBar.classList.remove("error");
     getCountryData(userData);
   }
 
@@ -32,7 +33,15 @@ form.addEventListener("submit", function (e) {
 
 const renderError = function () {
   errorMessage.classList.remove("hidden");
+  searchBar.classList.add("error");
 };
+
+document.addEventListener("click", function (e) {
+  if (!searchBar.contains(e.target)) {
+    searchBar.classList.remove("error");
+    errorMessage.classList.add("hidden");
+  }
+});
 
 /*---------------------------------------------------------------------------------------------------------------------------- */
 
@@ -90,6 +99,7 @@ const renderCountries = function (data) {
         countryCard.classList.add("removed");
         countryCard.remove();
         errorMessage.classList.add("hidden");
+        searchBar.classList.remove("error");
         currentCounter--;
         console.log(currentCounter);
       }
