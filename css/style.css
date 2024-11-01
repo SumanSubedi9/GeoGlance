@@ -156,8 +156,13 @@ body {
   right: 1rem;
 }
 
+.close-btn ion-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .close-btn:hover {
-  transform: scale(2);
+  transform: scale(1.2);
   transition: all 0.5s;
 }
 
